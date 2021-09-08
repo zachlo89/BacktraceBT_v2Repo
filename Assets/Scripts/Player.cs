@@ -9,8 +9,7 @@ using Backtrace.Unity.Model;
 
 public class Player : MonoBehaviour
 {
-    // Backtrace client instance
-    // private BacktraceClient _backtraceClient;
+
     private CharacterController _charController;
     
     [Header(("Controller Settings"))]
@@ -38,6 +37,7 @@ public class Player : MonoBehaviour
 
         }
         
+        
         _mainCam = Camera.main;
         if (_mainCam == null)
         {
@@ -49,53 +49,17 @@ public class Player : MonoBehaviour
 
         System.Diagnostics.Debugger.Launch();
         System.Environment.FailFast("Error happened WHA????");
-        
-        
-        // var serverUrl = "https://submit.backtrace.io/testing-game-dev-zachlo89/2210a76995f21ae1bd1857da832bcb55096767fecf268e61196fd980130ff8b2/json";
-        // var gameObjectName = "Backtrace";
-        // var databasePath =  "${Application.persistentDataPath}/sample/backtrace/path";
-        // var attributes = new Dictionary<string, string>() { {"my-super-cool-attribute-name", "attribute-value"} };
-        //
-        // // use game object to initialize Backtrace integration
-        // _backtraceClient = GameObject.Find(gameObjectName).GetComponent<BacktraceClient>();
-        // //Read from manager BacktraceClient instance
-        // var database = GameObject.Find(gameObjectName).GetComponent<BacktraceDatabase>();
-        //
-        // // or initialize Backtrace integration directly in your source code
-        // _backtraceClient = BacktraceClient.Initialize(
-        //     url: serverUrl,
-        //     databasePath: databasePath ,
-        //     gameObjectName: gameObjectName,
-        //     attributes: attributes);
     }
     
     void Update()
     {
         CalculateMovement();
         CamController();
-        // tform local to world space Transform.TransformDirection
-        // velocity and tform dir to local dir
-        
-        
+ 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
         }
-        
-        
-        // try
-        // {
-        //     // throw an exception here
-        // }
-        // catch (Exception exception)
-        // {
-        //     var report = new BacktraceReport(
-        //         exception: exception,
-        //         attributes: new Dictionary<string, object>() { { "key", "value" } },
-        //         attachmentPaths: new List<string>() { @"file_path_1", @"file_path_2" }
-        //     );
-        //     _backtraceClient.Send(report);
-        // }
         
     }
     
