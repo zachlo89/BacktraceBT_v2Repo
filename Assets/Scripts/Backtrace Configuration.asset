@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ServerUrl: https://submit.backtrace.io/testing-game-dev-zachlo89/2210a76995f21ae1bd1857da832bcb55096767fecf268e61196fd980130ff8b2/json
   Token: 
-  ReportPerMin: 5
+  ReportPerMin: 10
   HandleUnhandledExceptions: 1
   IgnoreSslValidation: 0
   DestroyOnLoad: 0

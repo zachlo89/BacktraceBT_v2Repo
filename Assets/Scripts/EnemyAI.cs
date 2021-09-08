@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Backtrace.Unity;
+using Backtrace.Unity.Model;
 
 public class EnemyAI : MonoBehaviour
 {

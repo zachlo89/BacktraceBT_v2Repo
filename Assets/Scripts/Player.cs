@@ -1,11 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
+using Backtrace.Unity;
+using Backtrace.Unity.Model;
 
 public class Player : MonoBehaviour
 {
+    // Backtrace client instance
+    // private BacktraceClient _backtraceClient;
     private CharacterController _charController;
     
     [Header(("Controller Settings"))]
@@ -28,7 +33,9 @@ public class Player : MonoBehaviour
         _charController = GetComponent<CharacterController>();
         if (_charController == null)
         {
-            Debug.LogError("Character Controller is NULL");
+            //Debug.LogError("Character Controller is NULL");
+            throw new NullReferenceException("NO CHARACTER CONTROLLER!");
+
         }
         
         _mainCam = Camera.main;
@@ -39,6 +46,27 @@ public class Player : MonoBehaviour
         
         // lock cursor & hide when game starts
         Cursor.lockState = CursorLockMode.Locked;
+
+        System.Diagnostics.Debugger.Launch();
+        System.Environment.FailFast("Error happened WHA????");
+        
+        
+        // var serverUrl = "https://submit.backtrace.io/testing-game-dev-zachlo89/2210a76995f21ae1bd1857da832bcb55096767fecf268e61196fd980130ff8b2/json";
+        // var gameObjectName = "Backtrace";
+        // var databasePath =  "${Application.persistentDataPath}/sample/backtrace/path";
+        // var attributes = new Dictionary<string, string>() { {"my-super-cool-attribute-name", "attribute-value"} };
+        //
+        // // use game object to initialize Backtrace integration
+        // _backtraceClient = GameObject.Find(gameObjectName).GetComponent<BacktraceClient>();
+        // //Read from manager BacktraceClient instance
+        // var database = GameObject.Find(gameObjectName).GetComponent<BacktraceDatabase>();
+        //
+        // // or initialize Backtrace integration directly in your source code
+        // _backtraceClient = BacktraceClient.Initialize(
+        //     url: serverUrl,
+        //     databasePath: databasePath ,
+        //     gameObjectName: gameObjectName,
+        //     attributes: attributes);
     }
     
     void Update()
@@ -53,6 +81,22 @@ public class Player : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
         }
+        
+        
+        // try
+        // {
+        //     // throw an exception here
+        // }
+        // catch (Exception exception)
+        // {
+        //     var report = new BacktraceReport(
+        //         exception: exception,
+        //         attributes: new Dictionary<string, object>() { { "key", "value" } },
+        //         attachmentPaths: new List<string>() { @"file_path_1", @"file_path_2" }
+        //     );
+        //     _backtraceClient.Send(report);
+        // }
+        
     }
     
     void CalculateMovement()
