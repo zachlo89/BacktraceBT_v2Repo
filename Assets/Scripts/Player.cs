@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         System.Diagnostics.Debugger.Launch();
-        System.Environment.FailFast("Error happened WHA????");
+        
     }
     
     void Update()
